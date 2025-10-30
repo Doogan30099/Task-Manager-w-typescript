@@ -19,30 +19,38 @@ const AddTaskForm: React.FC = () => {
 
 
     return (
-        <form onSubmit={handleSubmit} className="d-flex flex-column gap-2">
-            <input
-                type="text"
-                placeholder="Task title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-                className="form-control mb-2"
-            />
-            <textarea
-                placeholder="Description(optional)"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                className="form-control mt-2"
-                rows={3}
-            />
+      <form onSubmit={handleSubmit} className="d-flex flex-column gap-2">
+        <input
+          type="text"
+          placeholder="Task title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+          className="form-control mb-2"
+        />
+        <textarea
+          placeholder="Description(optional)"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="form-control mt-2"
+          rows={3}
+        />
+        <div className="d-flex gap-2 mt-4">
             <button
-                type="submit"
-                className="btn btn-primary"
-                onClick={() => navigate("/dashboard")}
+            type="submit"
+            className="btn btn-primary"
+            onClick={() => navigate("/dashboard")}
             >
-                Add Task
+            Add Task
             </button>
-        </form>
+            <button
+            className="btn btn-primary"
+            onClick={() => navigate("/dashboard")}
+            >
+                Back to Dashboard
+            </button>
+        </div>
+      </form>
     );
 }
 
