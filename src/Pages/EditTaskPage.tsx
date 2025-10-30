@@ -31,11 +31,14 @@ const EditTask: React.FC = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === " checkbox" ? checked : value,
-    });
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+    const name = target.name;
+    const newValue =
+      target instanceof HTMLInputElement && target.type === "checkbox"
+        ? target.checked
+        : target.value;
+
+    setFormData((prev) => (prev ? { ...prev, [name]: newValue } as Task : prev));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
